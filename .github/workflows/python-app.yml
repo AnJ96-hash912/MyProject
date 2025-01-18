@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: win-latest
+    runs-on: win-latest, x64, gpu
 
     steps:
     - uses: actions/checkout@v4
