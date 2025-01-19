@@ -28,7 +28,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run setup script
-      run: ./setup.ps1
+      run: "C:\Users\Shravan\Powershell scripts\setup.ps1"
       shell: pwsh
 
     - name: Run application
