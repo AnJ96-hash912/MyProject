@@ -2,29 +2,34 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
       with:
-        python-version: "3.10"
+        python-version: '3.10'
+
+    - name: Set PowerShell execution policy
+      run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+      shell: pwsh
+
     - name: Install dependencies
       run: |
-        py -m pip install --upgrade pip
-        py -m pip install pytest
-        py -m pip install -r requirements.txt
-    - name: Deploy python app
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run setup script
+      run: ./setup.ps1
+      shell: pwsh
+
+    - name: Run application
       run: python app.py
-    - name: Test with pytest
-      run: pytest
