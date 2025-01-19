@@ -1,3 +1,4 @@
+git+https://github.com/AnJ-hash912/MyProject.git@main#egg=MyProject
 tensorflow
 Pillow==2.6.1
 transformers
