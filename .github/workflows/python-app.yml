@@ -25,8 +25,6 @@ jobs:
         py -m pip install pytest
         py -m pip install -r requirements.txt
     - name: Deploy python app
-      run: |
-        python app.py
+      run: python app.py
     - name: Test with pytest
-      run: |
-        pytest
+      run: pytest
