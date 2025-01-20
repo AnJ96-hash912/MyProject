@@ -19,7 +19,7 @@ jobs:
         python-version: '3.10'
 
     - name: Run PowerShell setup script
-      run: powershell.exe -ExecutionPolicy Bypass -File 'C:\Users\Shravan\Powershell scripts\setup.ps1'
+      run: powershell.exe -ExecutionPolicy Bypass -File 'C:\Users\Shravan\scripts\setup.ps1'
 
     - name: Install dependencies
       run: |
