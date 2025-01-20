@@ -26,9 +26,7 @@ jobs:
 
     - name: Run application
       run: |
-       python app.py &
-      env:
-        PORT: 8080  # Example of setting environment variables if needed
+       python python.py > app.log 2>&1 &
 
     # Step 5: Wait for the application to start (optional)
     - name: Wait for the app to start
