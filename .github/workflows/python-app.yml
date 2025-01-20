@@ -27,6 +27,7 @@ jobs:
     - name: Run application
       run: |
        python python.py > app.log 2>&1 &
+       
     - name: List active processes
       run: ps -ef
 
