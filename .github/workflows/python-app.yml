@@ -32,16 +32,21 @@ jobs:
 
     # Step 5: Wait for the application to start (optional)
     - name: Wait for the app to start
+      shell: bash
       run: |
         timeout=30
-        while [ curl -s http://localhost:8080 ]; do
+        echo "Waiting for the application to start at http://localhost:8080..."
+        while ! curl -s http://localhost:8080; do
           ((timeout--))
           if [ $timeout -le 0 ]; then
-            echo "Application failed to start."
+            echo "Application failed to start within the timeout period."
             exit 1
-            sleep 1
           fi
+            echo "Application not ready yet. Retrying in 1 second..."
+            sleep 1
         done
+        echo "Application started successfully!"
+
 
     # Step 6: Run pytest
     - name: Run tests
