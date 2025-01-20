@@ -26,7 +26,7 @@ jobs:
 
     - name: Run application
       run: |
-       python app.py
+       python app.py &
       env:
         PORT: 8080  # Example of setting environment variables if needed
 
@@ -34,7 +34,7 @@ jobs:
     - name: Wait for the app to start
       run: |
         timeout=30
-        while ! [curl -s http://localhost:8080]; do
+        while ! curl -s http://localhost:8080; do
           ((timeout--))
           if [ $timeout -le 0 ]; then
             echo "Application failed to start."
