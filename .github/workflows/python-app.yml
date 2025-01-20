@@ -25,5 +25,6 @@ jobs:
         pip install tf-keras
 
     - name: Run application
-      run: python app.py
-           streamlit run app.py
+      run: | 
+        python app.py
+        streamlit app.py
