@@ -25,4 +25,25 @@ jobs:
         pip install tf-keras
 
     - name: Run application
-      run: python app.py
+      run: |
+       python app.py
+      env:
+        PORT: 8080  # Example of setting environment variables if needed
+
+    # Step 5: Wait for the application to start (optional)
+    - name: Wait for the app to start
+      run: |
+        timeout=30
+        while ! curl -s http://localhost:8080; do
+          ((timeout--))
+          if [ $timeout -le 0 ]; then
+            echo "Application failed to start."
+            exit 1
+          fi
+          sleep 1
+        done
+
+    # Step 6: Run pytest
+    - name: Run tests
+      run: |
+        pytest --maxfail=5 --disable-warnings -v
