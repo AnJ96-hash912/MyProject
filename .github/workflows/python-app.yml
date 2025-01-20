@@ -27,12 +27,17 @@ jobs:
     - name: Run application
       run: |
        python python.py > app.log 2>&1 &
+    - name: List active processes
+      run: ps -ef
+
+    - name: Check open ports
+      run: netstat -tuln
 
     # Step 5: Wait for the application to start (optional)
     - name: Wait for the app to start
       shell: bash
       run: |
-        timeout=300
+        timeout=60
         echo "Waiting for the application to start at http://localhost:8080..."
         while ! curl -s http://localhost:8080; do
           ((timeout--))
