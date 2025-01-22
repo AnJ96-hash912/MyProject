@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    '''
     caption=pipeline('image-to-text',model='ydshieh/vit-gpt2-coco-en')
     uploaded_image=st.file_uploader("upload an image", type=["png","jpg","jpeg"])
     if uploaded_image is not None:
@@ -15,6 +16,8 @@ def home():
         if st.button("Generate caption"):
             captions=caption(image)
             st.write(captions[0],['generated text'])
+    '''
+    return "Hello World"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True, port=8080)
