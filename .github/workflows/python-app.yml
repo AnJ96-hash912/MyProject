@@ -35,7 +35,7 @@ jobs:
       run: |
         timeout=60
         echo "Waiting for the application to start at http://localhost:8080..."
-        while ! curl -s http://localhost:8080; do
+        while ! curl -s http://localhost:8081; do
           ((timeout--))
           if [ $timeout -le 0 ]; then
             echo "Application failed to start within the timeout period."
@@ -44,6 +44,7 @@ jobs:
             echo "Application not ready yet. Retrying in 1 second..."
             sleep 1
         done
+        curl http://localhost:8081
         echo "Application started successfully!"
 
 
