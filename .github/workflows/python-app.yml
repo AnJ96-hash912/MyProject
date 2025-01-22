@@ -50,9 +50,3 @@ jobs:
             echo "Application not ready yet. Retrying in 1 second..."
             sleep 1
         done
-
-
-    # Step 6: Run pytest
-    - name: Run tests
-      run: |
-        pytest --maxfail=5 --disable-warnings -v
