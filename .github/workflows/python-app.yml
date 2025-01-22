@@ -25,7 +25,7 @@ jobs:
         pip install tf-keras
 
     - name: Check for open ports
-      run: netstat tuln
+      run: netstat -a
 
     - name: Run application
       run: |
