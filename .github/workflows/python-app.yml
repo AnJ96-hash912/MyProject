@@ -24,6 +24,9 @@ jobs:
         pip install -r requirements.txt
         pip install tf-keras
 
+    - name: Check for open ports
+      run: netstat tuln
+
     - name: Run application
       run: |
        python main.py > app.log 2>&1 &
