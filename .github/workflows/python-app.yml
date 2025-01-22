@@ -26,7 +26,7 @@ jobs:
 
     - name: Run application
       run: |
-       python python.py > app.log 2>&1 &
+       python main.py > app.log 2>&1 &
        
 
     # Step 5: Wait for the application to start (optional)
