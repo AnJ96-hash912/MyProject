@@ -20,4 +20,6 @@ def home():
     return "Hello World"
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80)
+    import os
+    debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() in ['true', '1', 't']
+    app.run(debug=debug_mode, port=80)
